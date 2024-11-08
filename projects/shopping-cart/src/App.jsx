@@ -1,6 +1,7 @@
 import { Filters } from "./components/Filters"
 import { ListOfProducts } from "./components/ListOfProducts"
 import { ShoppingCart } from "./components/ShoppingCart"
+import { CartProvider } from "./contexts/cartProducts"
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
         
         <Filters/>
       </div>
-
-      <ListOfProducts/>
-      <ShoppingCart/>
+      <CartProvider>
+        <ListOfProducts/>
+        <ShoppingCart/>
+      </CartProvider>
     </>
   )
 }

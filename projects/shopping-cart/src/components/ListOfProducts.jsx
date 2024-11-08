@@ -21,7 +21,7 @@ export function ListOfProducts(){
 
     return(
         <section className="max-w-screen-lg mx-auto">
-            <div className="grid justify-items-center grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
+            <div className="grid justify-items-center grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5 mb-10">
                 {
                     products.length === 0  ? 
                         <p className="text-center">Loading...</p>
@@ -31,7 +31,7 @@ export function ListOfProducts(){
                         return (
                             <ProductCard 
                                 key={product.id}
-                                {...product}
+                                product = {product}
                             />
                         )
                     })

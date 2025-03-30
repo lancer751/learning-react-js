@@ -7,7 +7,6 @@ import { ProductCard } from "../components/ProductCard"
 export const HomePage = () => {
   const getAllProducts = useProductStore(state => state.getProducts)
   const products = useProductStore(state => state.products)
-  console.log(products)
   useEffect(() => {
     getAllProducts()
   }, [getAllProducts])
@@ -32,6 +31,7 @@ export const HomePage = () => {
             lg: 3
           }}
           w={"full"}
+          justifyItems={"center"}
           spacing={5}
         >
           {

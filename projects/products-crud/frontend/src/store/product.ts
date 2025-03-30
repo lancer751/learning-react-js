@@ -11,10 +11,11 @@ interface ProductState{
     products:  Product[],
     createNewProduct: (newProduct: Product) => Promise<ResponseInformation>,
     getProducts: () => Promise<Product[] | Error>
-    deleteProduct: (productId : string | undefined) => Promise<ResponseInformation>
+    deleteProduct: (productId : string | undefined) => Promise<ResponseInformation>,
+    updateProduct: (productToUpdate: Product) => Promise<ResponseInformation>
 }
 
-export const useProductStore = create<ProductState>()((set) => ({
+export const useProductStore = create<ProductState>()((set, get) => ({
     products: [],
     createNewProduct: async (newProduct) => {
         console.log(newProduct)
@@ -42,7 +43,6 @@ export const useProductStore = create<ProductState>()((set) => ({
         try{
             const response = await fetch('/api/products')
             const {data} = await response.json()
-            console.log(data)
             set({products: data})
             return data
         }catch(error){
@@ -60,6 +60,31 @@ export const useProductStore = create<ProductState>()((set) => ({
         }catch(error){
             console.log("Error on deleting product", error)
             return {success: false, message: "Error on delete the product"}
+        }
+    },
+    updateProduct: async(productWithChanges) => {
+        const {_id : productId} = productWithChanges
+        try{
+            const response = await fetch(`/api/products/${productId}`, {
+                method: 'put',
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(productWithChanges)
+            })
+
+            const updateInfo : ResponseInformation = await response.json()
+            if(!response.ok) return updateInfo
+
+            const {products} = get()
+            const  indexProductToUpdate = products.findIndex(p => p._id === productId)
+            const productsCopy = structuredClone(products)
+            productsCopy[indexProductToUpdate] = productWithChanges
+            set({products: productsCopy})
+            return {success: updateInfo.success, message: "The product was updated Successfully."}
+        }catch(error){
+            console.log("Erron on update product.", error)
+            return {success: false, message: "Error to update product. The request failed."}
         }
     }
 }))

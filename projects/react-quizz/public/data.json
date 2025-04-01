@@ -1,0 +1,53 @@
+[
+      {
+        "id": 1,
+        "question": "¿Qué es React.js?",
+        "alternatives": [
+          { "option": "Una biblioteca de JavaScript para construir interfaces de usuario", "isCorrect": true },
+          { "option": "Un framework backend de Node.js", "isCorrect": false },
+          { "option": "Un lenguaje de programación", "isCorrect": false },
+          { "option": "Un sistema operativo", "isCorrect": false }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "¿Cuál es el hook utilizado para manejar el estado en un componente funcional?",
+        "alternatives": [
+          { "option": "useState", "isCorrect": true },
+          { "option": "useEffect", "isCorrect": false },
+          { "option": "useContext", "isCorrect": false },
+          { "option": "useReducer", "isCorrect": false }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "¿Qué sintaxis se usa en React para escribir componentes de manera declarativa?",
+        "alternatives": [
+          { "option": "JSX", "isCorrect": true },
+          { "option": "HTML", "isCorrect": false },
+          { "option": "XML", "isCorrect": false },
+          { "option": "JSON", "isCorrect": false }
+        ]
+      },
+      {
+        "id": 4,
+        "question": "¿Qué hook se usa para realizar efectos secundarios en un componente funcional?",
+        "alternatives": [
+          { "option": "useEffect", "isCorrect": true },
+          { "option": "useState", "isCorrect": false },
+          { "option": "useRef", "isCorrect": false },
+          { "option": "useMemo", "isCorrect": false }
+        ]
+      },
+      {
+        "id": 5,
+        "question": "¿Cómo se pasa información de un componente padre a un componente hijo en React?",
+        "alternatives": [
+          { "option": "A través de props", "isCorrect": true },
+          { "option": "Usando Redux", "isCorrect": false },
+          { "option": "Mediante useState", "isCorrect": false },
+          { "option": "Con eventos nativos de JavaScript", "isCorrect": false }
+        ]
+      }
+]
+  

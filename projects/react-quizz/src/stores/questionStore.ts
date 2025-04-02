@@ -4,15 +4,19 @@ import { Question } from "../types";
 interface QuestionState {
     quizz: Question[],
     indexCurrentQuestion: number,
+    hasFinished: boolean,
     getQuestions: () => Promise<void>,
     nextQuestion: () => void,
     prevQuestions: () => void,
     selectAnswer: (questionID: number, answerId: number) => void,
+    finishQuizz: () => void,
+    resetQuizz: () => void
 }
 
 export const useQuestionStore = create<QuestionState>()((set, get) => ({
     quizz: [],
     indexCurrentQuestion: 0,
+    hasFinished: false,
     getQuestions: async () => {
         try{
             const response = await fetch('./data.json')
@@ -40,5 +44,7 @@ export const useQuestionStore = create<QuestionState>()((set, get) => ({
         if(!questionInfo) return
         questionInfo.userSelectedAnswer = answerId
         set({quizz: newQuestions})
-    }
+    },
+    finishQuizz: () => set({hasFinished: true, indexCurrentQuestion: 0}),
+    resetQuizz: () => set({hasFinished: false, quizz: []})
 }))

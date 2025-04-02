@@ -1,6 +1,6 @@
 import {  useState } from "react"
-import CardQuestion from "./components/CardQuestion"
 import { useQuestionStore } from "./stores/questionStore"
+import Game from "./components/Game"
 
 function App() {
   const [start, setStart] = useState(false)
@@ -19,7 +19,7 @@ function App() {
             <button onClick={async() => { await getQuestions(); setStart(!start)}} className="text-white bg-sky-500 hover:bg-sky-300 px-8 py-2 rounded-md transition-colors">Start</button>
           </div>
         ) : (
-          <CardQuestion questions={questions}/>
+         <Game/>
         )
       }
         
